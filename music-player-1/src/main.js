@@ -103,6 +103,35 @@ const app = createApp({
             dialog_sfs_visible.value = true;
         };
 
+        const dialog_load_url_visible = ref(false);
+        const dialog_load_url_value   = ref('');
+
+        const dialog_load_url = async () => {
+            if(!dialog_load_url_visible.value) {
+                dialog_load_url_visible.value = true;
+
+                return;
+            }
+
+            if(!dialog_load_url_value.value) return;
+
+            try {
+                duration.value = await player.loadURL(dialog_load_url_value.value);
+            } catch(e) {
+                console.log(e);
+            }
+
+            if(!interval) {
+                interval = setInterval(() => {
+                    currentTime.value = player.getCurrentTime();
+
+                    if(player.isPlaying && !player.isPaused && currentTime.value >= player.duration) player.stop();
+                }, 100);
+            }
+
+            dialog_load_url_visible.value = false;
+        }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         const container_visible = ref(false);
@@ -117,7 +146,7 @@ const app = createApp({
             container_visible.value = true;
         };
 
-        const player = reactive(new AudioPlayer());
+        const player = reactive(new AudioStreaming());
 
         const currentTime = ref(0);
         const duration    = ref(0);
@@ -187,6 +216,9 @@ const app = createApp({
             dialog_sfs_visible,
             dialog_sfs_select_value_1,
             dialog_sfs,
+            dialog_load_url_visible,
+            dialog_load_url_value,
+            dialog_load_url,
 
             developer,
 
@@ -317,6 +349,44 @@ const app = createApp({
                 </v-card>
             </v-dialog>
             <v-dialog
+                v-model="dialog_load_url_visible"
+                max-width="600"
+            >
+                <v-card
+                    prepend-icon="mdi-surround-sound"
+                    title="URLからストリーム"
+                    text=""
+                >
+                    <v-card-text>
+                        <v-text-field
+                            ref="dialog_load_url_ref"
+                            v-model="dialog_load_url_value"
+                            label="URL"
+                            required
+                            :rules="dialog_load_url_rules"
+                            :loading="dialog_load_url_loading"
+                            :disabled="dialog_load_url_loading"
+                        ></v-text-field>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            variant="plain"
+                            text="Close"
+                            @click="dialog_load_url_visible = false"
+                            :disabled="dialog_load_url_loading"
+                        ></v-btn>
+                        <v-btn
+                            variant="tonal"
+                            text="Load"
+                            color="primary"
+                            @click="dialog_load_url()"
+                            :disabled="dialog_load_url_loading"
+                        ></v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+            <v-dialog
                 v-model="dialog_sfs_visible"
                 max-width="600"
             >
@@ -350,6 +420,10 @@ const app = createApp({
                             <v-card-text>
                                 <v-file-input label="音声ファイル" @update:model-value="onFileSelected"></v-file-input>
                                 <div class="d-flex" style="gap: 1rem; overflow: auto hidden;">
+                                    <v-btn
+                                        color="secondary"
+                                        @click="dialog_load_url()"
+                                    ><v-icon>mdi-link</v-icon></v-btn>
                                     <v-btn
                                         color="secondary"
                                         @click="dialog_equalizer()"
