@@ -201,11 +201,7 @@ class AudioStreaming extends AudioPlayer {
             if(!this.streamSource || !this.streamSource.context) this._createStreamSource();
         }
 
-        if(wasPlaying) {
-            setTimeout(() => {
-                this.play();
-            }, 250);
-        }
+        if(wasPlaying) setTimeout(() => { this.play(); }, 250);
     }
 
     destroy() {

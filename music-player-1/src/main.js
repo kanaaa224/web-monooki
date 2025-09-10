@@ -124,8 +124,6 @@ const app = createApp({
             if(!interval) {
                 interval = setInterval(() => {
                     currentTime.value = player.getCurrentTime();
-
-                    if(player.isPlaying && !player.isPaused && currentTime.value >= player.duration) player.stop();
                 }, 100);
             }
 
@@ -172,8 +170,6 @@ const app = createApp({
             if(!interval) {
                 interval = setInterval(() => {
                     currentTime.value = player.getCurrentTime();
-
-                    if(player.isPlaying && !player.isPaused && currentTime.value >= player.duration) player.stop();
                 }, 100);
             }
         };
@@ -451,6 +447,7 @@ const app = createApp({
                                             :model-value="currentTime"
                                             @update:model-value="player.seekTo($event);"
                                             :max="duration"
+                                            :disabled="!player.isLoaded"
                                             step="0.01"
                                             hide-details
                                             style="flex: 1; min-width: 5rem;"
