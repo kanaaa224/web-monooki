@@ -1,39 +1,59 @@
 class CoverFlow {
-    constructor(container, covers = [], size = 256) {
-        const wrapper = document.createElement('div');
+    constructor(container, covers = [], size = 256, clickHandler = null) {
+        this.container      = container;
+        this.wrapper        = document.createElement('div');
+        this.innerContainer = document.createElement('div');
 
-        wrapper.className = 'coverFlow';
+        this.coverSize    = size;
+        this.currentIndex = 0;
+        this.length       = covers.length;
 
-        wrapper.style.height = `${size}px`;
+        this.wrapper.className        = 'coverFlow';
+        this.wrapper.style.height     = `${size}px`;
+        this.innerContainer.className = 'container';
 
-        const innerContainer = document.createElement('div');
+        this.eventListeners = [];
 
-        innerContainer.className = 'container';
-
-        covers.forEach(htmlString => {
+        covers.forEach((htmlString, index) => {
             const temp = document.createElement('div');
 
             temp.innerHTML = htmlString.trim();
 
             const element = temp.firstChild;
 
-            if(element) {
-                element.classList.add('cover');
+            if(!element) return;
 
-                innerContainer.appendChild(element);
-            }
+            element.classList.add('cover');
+
+            const clickListener = () => { clickHandler ? clickHandler(index) : this.update(index); };
+
+            element.addEventListener('click', clickListener);
+
+            this.eventListeners.push({
+                element: element,
+                event: 'click',
+                listener: clickListener
+            });
+
+            this.innerContainer.appendChild(element);
         });
 
-        wrapper.appendChild(innerContainer);
-        container.appendChild(wrapper);
+        this.wrapper  .appendChild(this.innerContainer);
+        this.container.appendChild(this.wrapper);
+    }
 
-        this.container      = container;
-        this.wrapper        = wrapper;
-        this.innerContainer = innerContainer;
+    destroy() {
+        this.eventListeners.forEach(({ element, event, listener }) => {
+            if(element && element.removeEventListener) element.removeEventListener(event, listener);
+        });
 
-        this.coverSize    = size;
-        this.currentIndex = 0;
-        this.length       = covers.length;
+        this.eventListeners = [];
+
+        if(this.wrapper && this.wrapper.parentNode) this.wrapper.parentNode.removeChild(this.wrapper);
+
+        this.container      = null;
+        this.wrapper        = null;
+        this.innerContainer = null;
     }
 
     update(index = this.currentIndex) {
@@ -64,6 +84,6 @@ class CoverFlow {
 
 const colors = [ '#e11d48', '#f472b6', '#fb923c', '#facc15', '#84cc16', '#10b981', '#0ea5e9', '#3b82f6', '#8b5cf6', '#a78bfa' ];
 
-const coverFlow = new CoverFlow(document.querySelector('body'), Array.from({ length: 50 }, (_, i) => `<div onclick="coverFlow.update(${i})" style="background-color: ${colors[i % colors.length]}; aspect-ratio: 1 / 1;"></div>`));
+const coverFlow = new CoverFlow(document.querySelector('body'), Array.from({ length: 50 }, (_, i) => `<div style="background-color: ${colors[i % colors.length]}; aspect-ratio: 1 / 1;"></div>`));
 
 coverFlow.update(coverFlow.length / 2);
