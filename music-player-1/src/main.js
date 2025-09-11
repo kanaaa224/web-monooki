@@ -450,6 +450,7 @@ const app = createApp({
                                             :disabled="!player.isLoaded"
                                             step="0.01"
                                             hide-details
+                                            thumb-size="0"
                                             style="flex: 1; min-width: 5rem;"
                                         ></v-slider>
                                         <span>{{ formatTime(duration) }}</span>
