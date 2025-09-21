@@ -371,8 +371,8 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
                             <v-btn
                                 icon
                                 variant="plain"
-                                @click="theme.global.name.value = theme.global.name.value === 'dark' ? 'light' : 'dark'"
-                            ><v-icon :icon="theme.global.name.value === 'dark' ? 'mdi-weather-night' : 'mdi-white-balance-sunny'" /></v-btn>
+                                @click="theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'"
+                            ><v-icon :icon="theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-white-balance-sunny'" /></v-btn>
                         </div>
                     </v-fade-transition>
                 </v-main>
