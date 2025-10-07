@@ -27,7 +27,7 @@ class AudioStreaming extends AudioPlayer {
 
             this.streamSource.connect(this.equalizer.getInput());
         } catch(e) {
-            console.error('Failed to create MediaElementAudioSourceNode:', e);
+            console.error('Failed to create MediaElementAudioSourceNode: ', e);
         }
     }
 
@@ -133,7 +133,7 @@ class AudioStreaming extends AudioPlayer {
 
             if(playPromise && typeof playPromise.catch === 'function') {
                 playPromise.catch((error) => {
-                    console.error('HTMLAudioElement play failed:', error);
+                    console.error('HTMLAudioElement play failed: ', error);
 
                     this.isPlaying = false;
                 });
@@ -170,7 +170,7 @@ class AudioStreaming extends AudioPlayer {
             try {
                 this.streamElement.currentTime = 0;
             } catch(e) {
-                console.warn('Failed to reset currentTime:', e);
+                console.warn('Failed to reset currentTime: ', e);
             }
         }
     }
@@ -195,7 +195,7 @@ class AudioStreaming extends AudioPlayer {
             try {
                 this.streamElement.currentTime = targetTime;
             } catch(e) {
-                console.warn('Failed to seek:', e);
+                console.warn('Failed to seek: ', e);
             }
 
             if(!this.streamSource || !this.streamSource.context) this._createStreamSource();
