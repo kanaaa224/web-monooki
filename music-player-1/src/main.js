@@ -2,9 +2,7 @@ const { createApp, ref, onMounted, nextTick, reactive } = Vue;
 const { createVuetify, useTheme, useDisplay } = Vuetify;
 
 (async () => {
-    let api_default_endpoint_url = API_ENDPOINTS_URLS[0];
-
-    const callAPI = async (endpoint = api_default_endpoint_url, queries = {}, requestBody = null) => {
+    const callAPI = async (endpoint = '', queries = {}, requestBody = null) => {
         const url = new URL(endpoint);
 
         for(const [ key, value ] of Object.entries(queries)) url.searchParams.set(key, value);
@@ -29,8 +27,6 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
             const display = useDisplay();
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            const developer = ref({});
 
             const player = reactive(new AudioStreaming());
 
@@ -102,15 +98,6 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
                     theme.global.name.value = e.matches ? 'dark' : 'light';
                 });
 
-                try {
-                    developer.value = await callAPI();
-                } catch(e) {
-                    console.error(e);
-                }
-
-                ((l) => (l.href = developer.value.avatar_url, document.head.appendChild(l)))(document.querySelector("link[rel='icon']")             || Object.assign(document.createElement("link"), { rel: "icon" }));
-                ((l) => (l.href = developer.value.avatar_url, document.head.appendChild(l)))(document.querySelector("link[rel='apple-touch-icon']") || Object.assign(document.createElement("link"), { rel: "apple-touch-icon" }));
-
                 container_visible.value = true;
             });
 
@@ -141,7 +128,6 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
                 theme,
                 display,
 
-                developer,
                 player,
                 currentTime,
                 duration,
@@ -315,27 +301,32 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
                                     <div class="d-flex" style="gap: 1rem; overflow: auto hidden;">
                                         <v-btn
                                             color="secondary"
+                                            :size="display.xs.value ? 'small' : 'default'"
                                             @click="dialog_load_url()"
                                         ><v-icon icon="mdi-link" /></v-btn>
                                         <v-btn
                                             color="secondary"
-                                            @click="dialog_equalizer()"
+                                            :size="display.xs.value ? 'small' : 'default'"
                                             :disabled="!player.isLoaded"
+                                            @click="dialog_equalizer()"
                                         ><v-icon icon="mdi-tune-vertical" /></v-btn>
                                         <v-btn
                                             color="secondary"
-                                            @click="player.isPlaying ? player.pause() : player.play()"
+                                            :size="display.xs.value ? 'small' : 'default'"
                                             :disabled="!player.isLoaded"
+                                            @click="player.isPlaying ? player.pause() : player.play()"
                                         ><v-icon :icon="player.isPlaying ? 'mdi-pause' : 'mdi-play'" /></v-btn>
                                         <v-btn
                                             color="secondary"
-                                            @click="player.stop()"
+                                            :size="display.xs.value ? 'small' : 'default'"
                                             :disabled="!player.isLoaded"
+                                            @click="player.stop()"
                                         ><v-icon icon="mdi-stop" /></v-btn>
                                         <v-btn
                                             color="secondary"
-                                            @click="dialog_sfs()"
+                                            :size="display.xs.value ? 'small' : 'default'"
                                             :disabled="!player.isLoaded"
+                                            @click="dialog_sfs()"
                                         ><v-icon icon="mdi-surround-sound" /></v-btn>
                                         <div class="d-flex align-center justify-space-between w-100">
                                             <span>{{ formatTime(currentTime) }}</span>
@@ -361,16 +352,19 @@ const { createVuetify, useTheme, useDisplay } = Vuetify;
                         <div
                             v-if="container_visible"
                             class="d-flex flex-column"
-                            style="position: fixed; top: 2rem; right: 2rem; z-index: 999;"
+                            style="position: fixed; z-index: 999;"
+                            :style="display.xs.value ? 'top: 1rem; right: 1rem;' : 'top: 2rem; right: 2rem;'"
                         >
                             <v-btn
                                 icon
                                 variant="plain"
+                                :size="display.xs.value ? 'small' : 'default'"
                                 @click="dialog_settings()"
                             ><v-icon icon="mdi-cog" /></v-btn>
                             <v-btn
                                 icon
                                 variant="plain"
+                                :size="display.xs.value ? 'small' : 'default'"
                                 @click="theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'"
                             ><v-icon :icon="theme.global.current.value.dark ? 'mdi-weather-night' : 'mdi-white-balance-sunny'" /></v-btn>
                         </div>
