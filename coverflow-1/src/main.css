@@ -10,32 +10,71 @@ html {
     touch-action: manipulation;
 
     scroll-behavior: smooth;
+
+    @media (width < 600px) {
+        font-size: 14px !important;
+    }
 }
 
 body {
-    margin: 0;
-
-    overflow: hidden;
-
     font-family: sans-serif;
 
-    background-color: #333;
-
     user-select: none;
+
+    img {
+        pointer-events: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: #222;
+        color:            #fff;
+    }
 }
 
 /* ---------------------------------------------------------------------------------------------- */
 
-body {
-    position: absolute;
+main {
+    .container {
+        position: absolute;
 
-    width: 100%;
-    height: 100%;
+        width: 100%;
+        height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            color: inherit;
+        }
+    }
 }
+
+footer {
+    .container {
+        position: fixed;
+
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: fit-content;
+
+        margin: 0 auto;
+
+        opacity: 0.5;
+
+        p {
+            font-size: 0.75rem;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
 
 .coverFlow {
     width: 100%;
@@ -43,6 +82,8 @@ body {
     overflow: hidden;
 
     .container {
+        all: unset;
+
         height: 100%;
 
         display: flex;
