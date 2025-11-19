@@ -20,23 +20,22 @@
         <link rel="icon" type="image/png" href="https://github.com/kanaaa224.png">
         <link rel="apple-touch-icon"      href="https://github.com/kanaaa224.png">
 
-        <script src="https://cdn.jsdelivr.net/gh/kanaaa224/home-server-web-api@master/dist/web-api-client.min.js"></script>
-        <script src="https://unpkg.com/vue@3.5.21/dist/vue.global.prod.js"></script>
-        <script src="https://unpkg.com/vuetify@3.8.5/dist/vuetify.min.js"></script>
-
         <style>
             [v-cloak] { display: none; }
         </style>
 
-        <script>
-            const APP_NAME = 'アプリケーション';
-
-            const api = new WebAPIClient('https://cdn.jsdelivr.net/gh/kanaaa224/home-server-web-api@master/dist/endpoints.json', 'v1');
+        <script type="importmap">
+            {
+                "imports": {
+                    "vue":     "https://unpkg.com/vue@3.5.21/dist/vue.esm-browser.prod.js",
+                    "vuetify": "https://unpkg.com/vuetify@3.8.5/dist/vuetify.esm.js"
+                }
+            }
         </script>
     </head>
     <body>
         <div class="app" id="app" v-cloak></div>
 
-        <script src="./src/main.js?v=250421"></script>
+        <script type="module" src="./src/main.js?v=250421"></script>
     </body>
 </html>
