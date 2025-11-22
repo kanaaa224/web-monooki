@@ -65,3 +65,5 @@ class Equalizer {
         });
     }
 }
+
+export default Equalizer;

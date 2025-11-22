@@ -3,6 +3,8 @@
 //  (c) 2025 kanaaa224. All rights reserved.
 // --------------------------------------------------
 
+import AudioPlayer from './audio-player.js';
+
 class AudioStreaming extends AudioPlayer {
     constructor() {
         super();
@@ -223,3 +225,5 @@ class AudioStreaming extends AudioPlayer {
         this.masterGain  = null;
     }
 }
+
+export default AudioStreaming;

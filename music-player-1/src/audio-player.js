@@ -3,6 +3,9 @@
 //  (c) 2025 kanaaa224. All rights reserved.
 // --------------------------------------------------
 
+import Equalizer           from './equalizer.js';
+import SoundFieldSimulator from './sound-field-simulator.js';
+
 class AudioPlayer {
     constructor() {
         this.audioContext = null;
@@ -149,3 +152,5 @@ class AudioPlayer {
         if(this.masterGain) this.masterGain.gain.value = volume;
     }
 }
+
+export default AudioPlayer;
