@@ -1,0 +1,342 @@
+@charset "UTF-8";
+
+/* ---------------------------------------------------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    touch-action: manipulation;
+
+    scroll-behavior: smooth;
+
+    @media (width < 600px) {
+        font-size: 14px !important;
+    }
+}
+
+body {
+    font-family: sans-serif;
+
+    user-select: none;
+
+    img {
+        pointer-events: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: #222;
+        color:            #fff;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+main {
+    .container {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            color: inherit;
+        }
+    }
+}
+
+footer {
+    .container {
+        position: fixed;
+
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: fit-content;
+
+        margin: 0 auto;
+
+        opacity: 0.5;
+
+        p {
+            margin: 0 0 0.75rem 0;
+
+            font-size: 0.75rem;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+:root {
+    --hero-gradient-1-color-0: hsla(324.0845070422536, 69%, 60%, 1);
+    --hero-gradient-1-color-1: hsla(18.333333333333332, 87%, 48%, 1);
+    --hero-gradient-1-color-2: hsla(106.00000000000003, 94%, 89%, 0.76);
+    --hero-gradient-1-color-3: hsla(137, 93%, 64%, 0);
+    --hero-gradient-1-color-4: hsla(201, 97%, 75%, 0);
+}
+
+@property --hero-gradient-1-s-start-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 5.192107995846314%
+}
+
+@property --hero-gradient-1-s-end-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 28.82903247805523%
+}
+
+@property --hero-gradient-1-c-0 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: var(--hero-gradient-1-color-0)
+}
+
+@property --hero-gradient-1-x-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 52%
+}
+
+@property --hero-gradient-1-y-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 55%
+}
+
+@property --hero-gradient-1-s-start-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 10.430019105334893%
+}
+
+@property --hero-gradient-1-s-end-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 56.99147659571124%
+}
+
+@property --hero-gradient-1-c-1 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: var(--hero-gradient-1-color-1)
+}
+
+@property --hero-gradient-1-x-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 51%
+}
+
+@property --hero-gradient-1-y-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 57%
+}
+
+@property --hero-gradient-1-s-start-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 2%
+}
+
+@property --hero-gradient-1-s-end-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 141.78768296603226%
+}
+
+@property --hero-gradient-1-c-2 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: var(--hero-gradient-1-color-2)
+}
+
+@property --hero-gradient-1-x-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 53%
+}
+
+@property --hero-gradient-1-y-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 52%
+}
+
+@property --hero-gradient-1-s-start-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 6%
+}
+
+@property --hero-gradient-1-s-end-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 68%
+}
+
+@property --hero-gradient-1-c-3 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: var(--hero-gradient-1-color-3)
+}
+
+@property --hero-gradient-1-x-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 39%
+}
+
+@property --hero-gradient-1-y-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 52%
+}
+
+@property --hero-gradient-1-s-start-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 8%
+}
+
+@property --hero-gradient-1-s-end-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 74%
+}
+
+@property --hero-gradient-1-c-4 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: var(--hero-gradient-1-color-4)
+}
+
+@property --hero-gradient-1-x-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 11%
+}
+
+@property --hero-gradient-1-y-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 29%
+}
+
+@keyframes hero-gradient-1-animation {
+    0% {
+        --hero-gradient-1-s-start-0: 5.192107995846314%;
+        --hero-gradient-1-s-end-0: 28.82903247805523%;
+        --hero-gradient-1-c-0: var(--hero-gradient-1-color-0);
+        --hero-gradient-1-x-0: 52%;
+        --hero-gradient-1-y-0: 55%;
+
+        --hero-gradient-1-s-start-1: 10.430019105334893%;
+        --hero-gradient-1-s-end-1: 56.99147659571124%;
+        --hero-gradient-1-c-1: var(--hero-gradient-1-color-1);
+        --hero-gradient-1-x-1: 51%;
+        --hero-gradient-1-y-1: 57%;
+    }
+
+    50% {
+        --hero-gradient-1-s-start-0: 5.192107995846314%;
+        --hero-gradient-1-s-end-0: 28.82903247805523%;
+        --hero-gradient-1-c-0: var(--hero-gradient-1-color-0);
+        --hero-gradient-1-x-0: 18%;
+        --hero-gradient-1-y-0: 34%;
+
+        --hero-gradient-1-s-start-1: 9.651760651934062%;
+        --hero-gradient-1-s-end-1: 51.01482209931529%;
+        --hero-gradient-1-c-1: var(--hero-gradient-1-color-1);
+        --hero-gradient-1-x-1: 75%;
+        --hero-gradient-1-y-1: 42%;
+    }
+
+    100% {
+        --hero-gradient-1-s-start-0: 5.192107995846314%;
+        --hero-gradient-1-s-end-0: 28.82903247805523%;
+        --hero-gradient-1-c-0: var(--hero-gradient-1-color-0);
+        --hero-gradient-1-x-0: 86%;
+        --hero-gradient-1-y-0: 70%;
+
+        --hero-gradient-1-s-start-1: 8.731020284714111%;
+        --hero-gradient-1-s-end-1: 47.01937710929387%;
+        --hero-gradient-1-c-1: var(--hero-gradient-1-color-1);
+        --hero-gradient-1-x-1: 23%;
+        --hero-gradient-1-y-1: 67%;
+    }
+}
+
+.hero-gradient-1 {
+    width: 75%;
+    height: 50%;
+
+    margin: 0 auto;
+
+    --hero-gradient-1-c-0: var(--hero-gradient-1-color-0);
+    --hero-gradient-1-x-0: 52%;
+    --hero-gradient-1-y-0: 55%;
+
+    --hero-gradient-1-c-1: var(--hero-gradient-1-color-1);
+    --hero-gradient-1-x-1: 51%;
+    --hero-gradient-1-y-1: 57%;
+
+    --hero-gradient-1-c-2: var(--hero-gradient-1-color-2);
+    --hero-gradient-1-x-2: 53%;
+    --hero-gradient-1-y-2: 52%;
+
+    --hero-gradient-1-c-3: var(--hero-gradient-1-color-3);
+    --hero-gradient-1-x-3: 39%;
+    --hero-gradient-1-y-3: 52%;
+
+    --hero-gradient-1-c-4: var(--hero-gradient-1-color-4);
+    --hero-gradient-1-x-4: 11%;
+    --hero-gradient-1-y-4: 29%;
+
+    background-color: hsla(211.1688311688312, 34%, 56%, 0.85);
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 4000 4000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+
+        radial-gradient(
+            circle at var(--hero-gradient-1-x-0) var(--hero-gradient-1-y-0),
+            var(--hero-gradient-1-c-0) var(--hero-gradient-1-s-start-0),
+            transparent var(--hero-gradient-1-s-end-0)),
+
+            radial-gradient(circle at var(--hero-gradient-1-x-1) var(--hero-gradient-1-y-1),
+            var(--hero-gradient-1-c-1) var(--hero-gradient-1-s-start-1),
+            transparent var(--hero-gradient-1-s-end-1)),
+
+            radial-gradient(circle at var(--hero-gradient-1-x-2) var(--hero-gradient-1-y-2),
+            var(--hero-gradient-1-c-2) var(--hero-gradient-1-s-start-2),
+            transparent var(--hero-gradient-1-s-end-2)),
+
+            radial-gradient(circle at var(--hero-gradient-1-x-3) var(--hero-gradient-1-y-3),
+            var(--hero-gradient-1-c-3) var(--hero-gradient-1-s-start-3),
+            transparent var(--hero-gradient-1-s-end-3)),
+
+            radial-gradient(circle at var(--hero-gradient-1-x-4) var(--hero-gradient-1-y-4),
+            var(--hero-gradient-1-c-4) var(--hero-gradient-1-s-start-4),
+            transparent var(--hero-gradient-1-s-end-4)
+        )
+    ;
+
+    animation: hero-gradient-1-animation 25s linear infinite alternate;
+
+    background-blend-mode: overlay, normal, normal, normal, normal, normal;
+
+    border-radius: 5rem;
+}
