@@ -1,0 +1,11 @@
+{
+    "name": "kanaaa224 自宅サーバー",
+    "icons": [
+        {
+            "src": "https://cdn.jsdelivr.net/gh/kanaaa224/home-server@master/logo.png",
+            "sizes": "512x512"
+        }
+    ],
+
+    "display": "standalone"
+}
